@@ -10,21 +10,25 @@ typedef MotionTabBuilder = Widget Function(
 
 class MotionTabBar extends StatefulWidget {
 
-  final String tabOneName, tabTwoName,tabThreeName;
-  final IconData tabOneIcon, tabTwoIcon, tabThreeIcon;
+  final String tabOneName, tabTwoName, tabThreeName, tabFourName, tabFiveName;
+  final IconData tabOneIcon, tabTwoIcon, tabThreeIcon, tabFourIcon, tabFiveIcon;
   final Color tabIconColor,tabSelectedColor;
   final TextStyle textStyle;
   final Function onTabItemSelected;
   final int initialSelectedTab;
 
   MotionTabBar({
-  @required this.tabOneName,this.tabTwoName,this.tabThreeName,this.tabOneIcon,this.tabTwoIcon,this.tabThreeIcon,this.textStyle,this.tabIconColor,this.tabSelectedColor,this.onTabItemSelected,this.initialSelectedTab
+  @required this.tabOneName,this.tabTwoName,this.tabThreeName, this.tabFourName, this.tabFiveName,this.tabOneIcon,this.tabTwoIcon,this.tabThreeIcon, this.tabFourIcon, this.tabFiveIcon,this.textStyle,this.tabIconColor,this.tabSelectedColor,this.onTabItemSelected,this.initialSelectedTab
   }) :  assert(tabOneName != null),
         assert(tabTwoName != null),
         assert(tabThreeName != null),
+        assert(tabFourName != null),
+        assert(tabFiveName != null),
         assert(tabOneIcon != null),
         assert(tabTwoIcon != null),
         assert(tabThreeIcon != null),
+        assert(tabFourIcon != null),
+        assert(tabFiveIcon != null),
         assert(initialSelectedTab != null),
         assert(tabSelectedColor != null),
         assert(tabIconColor != null),
@@ -160,6 +164,36 @@ class _MotionTabBarState extends State<MotionTabBar>
                   callbackFunction: () {
                     setState(() {
                       nextIcon = widget.tabThreeIcon;
+                      currentSelected = 2;
+                      widget.onTabItemSelected(currentSelected);
+                    });
+                    _initAnimationAndStart(_positionAnimation.value, 1);
+                  }),
+              TabItem(
+                  selected: currentSelected == 3,
+                  iconData: widget.tabFourIcon,
+                  title: widget.tabFourName,
+                  textStyle: widget.textStyle,
+                  tabSelectedColor: widget.tabSelectedColor,
+                  tabIconColor: widget.tabIconColor,
+                  callbackFunction: () {
+                    setState(() {
+                      nextIcon = widget.tabFourIcon;
+                      currentSelected = 2;
+                      widget.onTabItemSelected(currentSelected);
+                    });
+                    _initAnimationAndStart(_positionAnimation.value, 1);
+                  }),
+              TabItem(
+                  selected: currentSelected == 4,
+                  iconData: widget.tabFiveIcon,
+                  title: widget.tabFiveName,
+                  textStyle: widget.textStyle,
+                  tabSelectedColor: widget.tabSelectedColor,
+                  tabIconColor: widget.tabIconColor,
+                  callbackFunction: () {
+                    setState(() {
+                      nextIcon = widget.tabFiveIcon;
                       currentSelected = 2;
                       widget.onTabItemSelected(currentSelected);
                     });
