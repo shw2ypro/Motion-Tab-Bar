@@ -209,7 +209,7 @@ class _MotionTabBarState extends State<MotionTabBar>
               heightFactor: 1,
               alignment: Alignment(_positionAnimation.value, 0),
               child: FractionallySizedBox(
-                widthFactor: 1 / 3,
+                widthFactor: 1 / 5,
                 child: Stack(
                   alignment: Alignment.center,
                   children: <Widget>[
